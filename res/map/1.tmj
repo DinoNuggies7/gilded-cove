@@ -1,0 +1,262 @@
+{ "compressionlevel":-1,
+ "height":10,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+         "height":10,
+         "id":2,
+         "name":"Floor",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":false,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+         "height":10,
+         "id":1,
+         "name":"Wall",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"Object",
+         "objects":[
+                {
+                 "gid":5,
+                 "height":96,
+                 "id":1,
+                 "name":"",
+                 "rotation":0,
+                 "type":"1",
+                 "visible":true,
+                 "width":96,
+                 "x":384,
+                 "y":480
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":2,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":768,
+                 "y":192
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":3,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":96,
+                 "y":192
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":4,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":96,
+                 "y":864
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":5,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":768,
+                 "y":864
+                }, 
+                {
+                 "gid":7,
+                 "height":96,
+                 "id":6,
+                 "name":"2",
+                 "properties":[
+                        {
+                         "name":"px",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"py",
+                         "type":"int",
+                         "value":8
+                        }],
+                 "rotation":0,
+                 "type":"4",
+                 "visible":true,
+                 "width":96,
+                 "x":576,
+                 "y":96
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":10,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":384,
+                 "y":576
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":11,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":480,
+                 "y":480
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":12,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":384,
+                 "y":192
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":13,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":480,
+                 "y":864
+                },
+            
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":14,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":768,
+                 "y":576
+                }, 
+                {
+                 "gid":6,
+                 "height":96,
+                 "id":15,
+                 "name":"",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":96,
+                 "x":96,
+                 "y":480
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+         "height":10,
+         "id":3,
+         "name":"Ceiling",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":false,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":5,
+ "nextobjectid":16,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.11.0",
+ "tileheight":96,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/texture\/0.tsx"
+        }, 
+        {
+         "firstgid":5,
+         "source":"..\/texture\/2.tsx"
+        }, 
+        {
+         "firstgid":6,
+         "source":"..\/texture\/4.tsx"
+        }, 
+        {
+         "firstgid":7,
+         "source":"..\/texture\/5.tsx"
+        }],
+ "tilewidth":96,
+ "type":"map",
+ "version":"1.10",
+ "width":10
+}

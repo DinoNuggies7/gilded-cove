@@ -1,0 +1,88 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map/2.tmj",
+    "expandedProjectPaths": [
+        "texture",
+        "map",
+        "."
+    ],
+    "fileStates": {
+        "map/1.tmj": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.33333333333326,
+                "y": 478.6666666666667
+            }
+        },
+        "map/2.tmj": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.33,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 193.93939393939377,
+                "y": 316.6666666666665
+            }
+        },
+        "texture/0.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "texture/1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "texture/2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "texture/3.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "texture/4.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "texture/5.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "/home/dinonuggies/C+/gilded-cove/res/texture",
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 96,
+    "map.tileWidth": 96,
+    "map.width": 10,
+    "openFiles": [
+        "map/1.tmj",
+        "map/2.tmj",
+        "texture/0.tsx",
+        "texture/1.tsx",
+        "texture/2.tsx",
+        "texture/3.tsx",
+        "texture/4.tsx",
+        "texture/5.tsx"
+    ],
+    "project": "gilded-cove.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "map/1.tmj",
+        "texture/5.tsx",
+        "texture/4.tsx",
+        "texture/3.tsx",
+        "texture/2.tsx",
+        "texture/1.tsx",
+        "texture/0.tsx",
+        "map/2.tmj"
+    ]
+}
