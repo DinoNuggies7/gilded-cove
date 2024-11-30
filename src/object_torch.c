@@ -10,7 +10,7 @@ void ObjectInit_Torch(Object* this) {
 	ActorInit(&this->actor);
 	this->actor.textureID = TEX_TORCH;
 	this->data = malloc(sizeof(long) * 1);
-	this->data[0] = (long)CreateLight(LIGHT_POINT, Vector3Zero(), Vector3Zero(), BLACK, shader);
+	this->data[0] = (long long)CreateLight(LIGHT_POINT, Vector3Zero(), Vector3Zero(), BLACK, shader);
 }
 
 void ObjectUpdate_Torch(Object* this) {

@@ -15,7 +15,9 @@ void PlayerInit() {
 	player.camera.up = (Vector3){0, 1, 0};
 	player.camera.fovy = 80;
 	player.camera.projection = CAMERA_PERSPECTIVE;
-	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){0, 0, 0, 255}, shader);
+	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){10, 10, 10, 255}, shader);
+	player.light->attenuation = 0.1;
+	player.light->falloff = 3;
 }
 
 void PlayerUpdate() {

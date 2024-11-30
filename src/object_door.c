@@ -4,6 +4,8 @@
 #include "draw.h"
 #include "map.h"
 
+#include <raymath.h>
+
 void ObjectInit_Door(Object* this) {
 	ActorInit(&this->actor);
 	this->actor.textureID = TEX_DOOR;
@@ -37,6 +39,7 @@ void ObjectInteract_Door(Object* this) {
 	player.camera.position.z = this->data[3];
 	FreeMap();
 	ParseMap(this->data[1]);
+	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){10, 10, 10, 255}, shader);
 }
 
 void ObjectDraw_Door(Object* this) {

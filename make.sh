@@ -10,6 +10,11 @@ if [ "$1" == "win" ]
 then
 	CC="x86_64-w64-mingw32-gcc"
 	LDFLAGS+=" -mwindows"
+
+	cd raylib/src
+	mingw64-make PLATFORM=PLATFORM_DESKTOP PLATFORM_OS=WINDOWS RAYLIB_LIBTYPE=SHARED -j$(nproc)
+	cd ../..
+	cp raylib/src/raylib.dll .
 elif [ "$1" == "zip" ]
 then
 	zip -r $OUT.zip $OUT.exe *.dll res/
@@ -21,14 +26,15 @@ then
 	make clean
 	cd ../..
 	exit
+else
+	cd raylib/src
+	make PLATFORM=PLATFORM_DESKTOP -j$(nproc)
+	cd ../..
 fi
 
 SRC=$(ls src | grep ".*\.c" | sed "s/\.c//")
 
 mkdir -p build
-cd raylib/src
-make PLATFORM=PLATFORM_DESKTOP -j$(nproc)
-cd ../..
 
 for file in $SRC
 do

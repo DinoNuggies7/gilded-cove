@@ -3,12 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map/2.tmj",
+    "activeFile": "map/1.tmj",
     "expandedProjectPaths": [
         "texture",
-        "map",
-        "."
+        ".",
+        "map"
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "map/1.tmj": {
             "expandedObjectLayers": [
@@ -18,18 +19,29 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 479.33333333333326,
-                "y": 478.6666666666667
+                "y": 477.99999999999994
             }
         },
         "map/2.tmj": {
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.33,
+            "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 193.93939393939377,
-                "y": 316.6666666666665
+                "x": 463.33333333333326,
+                "y": 439.33333333333326
+            }
+        },
+        "map/3.tmj": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 207.5,
+                "y": 9509.5
             }
         },
         "texture/0.tsx": {
@@ -58,14 +70,15 @@
         }
     },
     "last.imagePath": "/home/dinonuggies/C+/gilded-cove/res/texture",
-    "map.height": 10,
+    "map.height": 100,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 96,
     "map.tileWidth": 96,
-    "map.width": 10,
+    "map.width": 3,
     "openFiles": [
         "map/1.tmj",
         "map/2.tmj",
+        "map/3.tmj",
         "texture/0.tsx",
         "texture/1.tsx",
         "texture/2.tsx",
@@ -76,13 +89,14 @@
     "project": "gilded-cove.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "map/1.tmj",
         "texture/5.tsx",
         "texture/4.tsx",
         "texture/3.tsx",
         "texture/2.tsx",
         "texture/1.tsx",
         "texture/0.tsx",
-        "map/2.tmj"
+        "map/3.tmj",
+        "map/2.tmj",
+        "map/1.tmj"
     ]
 }

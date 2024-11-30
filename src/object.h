@@ -6,7 +6,7 @@ typedef struct Object {
 	int id;
 	int type;
 	Actor actor;
-	long* data;
+	long long* data;
 	void (*init)(struct Object* object);
 	void (*update)(struct Object* object);
 	void (*interact)(struct Object* object);
