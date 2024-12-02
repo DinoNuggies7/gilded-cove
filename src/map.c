@@ -161,7 +161,7 @@ void ParseMap(int mapID) {
 						}
 						float rotation = cJSON_GetNumberValue(jrotation);
 						int warp = atoi(cJSON_GetStringValue(jwarp));
-						obj->data = malloc(sizeof(long) * 5);
+						obj->data = malloc(sizeof(long long) * 5);
 						obj->data[0] = (int)(rotation / 90);
 						obj->data[1] = warp;
 						obj->data[2] = px;
