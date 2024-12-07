@@ -10,9 +10,8 @@ Shader shader;
 
 int main(int argc, char* argv[]) {
 
-  int width = 1920, height = 1080;
-  // int width = 640, height = 360;
-  InitWindow(1280, 720, "Gilded Cove");
+	int width = 640, height = 360;
+  InitWindow(width, height, "Gilded Cove");
   SetWindowSize(GetMonitorWidth(GetCurrentMonitor()), GetMonitorHeight(GetCurrentMonitor()));
   ToggleFullscreen();
   DisableCursor();
@@ -20,6 +19,8 @@ int main(int argc, char* argv[]) {
 
   RenderTexture2D target = LoadRenderTexture(width, height);
   SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);
+  Image image;
+  Texture texture;
 
   shader = LoadShader("res/shader/lighting.vs", "res/shader/lighting.fs");
   shader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shader, "viewPos");
@@ -34,6 +35,7 @@ int main(int argc, char* argv[]) {
   PlayerInit();
   
   while (!WindowShouldClose()) {
+  	if (IsKeyPressed(KEY_F11)) ToggleFullscreen();
 
 	  PlayerUpdate();
 
@@ -57,10 +59,17 @@ int main(int argc, char* argv[]) {
 		  PlayerDraw();
 		  DrawFPS(0, 0);
 	  EndTextureMode();
+
+	  image = LoadImageFromTexture(target.texture);
+	  ImageDither(&image, 4, 4, 4, 4);
+	  texture = LoadTextureFromImage(image);
   
 	  BeginDrawing();
-		  DrawTexturePro(target.texture, (Rectangle){0, 0, width, -height}, (Rectangle){0, 0, GetScreenWidth(), GetScreenHeight()}, (Vector2){0, 0}, 0, WHITE);
+		  DrawTexturePro(texture, (Rectangle){0, 0, width, -height}, (Rectangle){0, 0, GetScreenWidth(), GetScreenHeight()}, (Vector2){0, 0}, 0, WHITE);
 	  EndDrawing();
+
+	  UnloadImage(image);
+	  UnloadTexture(texture);
   }
 
   UnloadShader(shader);

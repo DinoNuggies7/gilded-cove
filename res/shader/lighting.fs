@@ -102,7 +102,4 @@ void main()
 
     // Gamma correction
     finalColor = pow(finalColor, vec4(1.0/2.2));
-
-    // Pixelate the light
-    // finalColor = floor(finalColor * 100.0) / 100.0;
 }
