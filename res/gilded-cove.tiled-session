@@ -37,11 +37,11 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 1,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 207.5,
-                "y": 9509.5
+                "x": 625.7575757575759,
+                "y": 9153.030303030304
             }
         },
         "texture/0.tsx": {

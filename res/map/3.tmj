@@ -251,6 +251,18 @@
                  "width":96,
                  "x":192,
                  "y":9504
+                }, 
+                {
+                 "gid":7,
+                 "height":96,
+                 "id":43,
+                 "name":"",
+                 "rotation":0,
+                 "type":"2",
+                 "visible":true,
+                 "width":96,
+                 "x":96,
+                 "y":192
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -371,7 +383,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":10,
+ "nextobjectid":62,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
@@ -388,6 +400,11 @@
         {
          "firstgid":6,
          "source":"..\/texture\/4.tsx"
+        },
+    
+        {
+         "firstgid":7,
+         "source":"..\/texture\/3.tsx"
         }],
  "tilewidth":96,
  "type":"map",

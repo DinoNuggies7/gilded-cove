@@ -39,7 +39,7 @@ void ObjectInteract_Door(Object* this) {
 	player.camera.position.z = this->data[3];
 	FreeMap();
 	ParseMap(this->data[1]);
-	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){0, 0, 0}, shader);
+	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){2, 2, 2}, shader);
 }
 
 void ObjectDraw_Door(Object* this) {

@@ -10,12 +10,12 @@ Player player;
 bool capturedCursor = true;
 
 void PlayerInit() {
-	player.camera.position = (Vector3){5, 0.5, 5};
+	player.camera.position = (Vector3){1, 0.5, 98};
 	player.camera.target = (Vector3){0, 0.5, 0};
 	player.camera.up = (Vector3){0, 1, 0};
 	player.camera.fovy = 80;
 	player.camera.projection = CAMERA_PERSPECTIVE;
-	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){0, 0, 0}, shader);
+	player.light = CreateLight(LIGHT_POINT, player.camera.position, Vector3Zero(), (Color){2, 2, 2}, shader);
 }
 
 void PlayerUpdate() {

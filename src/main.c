@@ -10,7 +10,8 @@ Shader shader;
 
 int main(int argc, char* argv[]) {
 
-	int width = 640, height = 360;
+	int width = 426, height = 240;
+  bool fullscreen = true;
   InitWindow(width, height, "Gilded Cove");
   SetWindowSize(GetMonitorWidth(GetCurrentMonitor()), GetMonitorHeight(GetCurrentMonitor()));
   ToggleFullscreen();
@@ -30,12 +31,19 @@ int main(int argc, char* argv[]) {
   SetShaderValue(shader, ambientLoc, (float[4]){0.0f, 0.0f, 0.0f, 1.0f}, SHADER_UNIFORM_VEC4);
 
   LoadTextures();
-  ParseMap(1);
+  ParseMap(3);
 
   PlayerInit();
   
   while (!WindowShouldClose()) {
-  	if (IsKeyPressed(KEY_F11)) ToggleFullscreen();
+  	if (IsKeyPressed(KEY_F11)) {
+  		fullscreen = !fullscreen;
+  		if (fullscreen)
+			  SetWindowSize(GetMonitorWidth(GetCurrentMonitor()), GetMonitorHeight(GetCurrentMonitor()));
+	  	else
+			  SetWindowSize(GetMonitorWidth(GetCurrentMonitor()) / 2, GetMonitorHeight(GetCurrentMonitor()) / 2);
+  		ToggleFullscreen();
+  	}
 
 	  PlayerUpdate();
 
