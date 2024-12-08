@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
   SetShaderValue(shader, ambientLoc, (float[4]){0.0f, 0.0f, 0.0f, 1.0f}, SHADER_UNIFORM_VEC4);
 
   LoadTextures();
-  ParseMap(3);
+  ParseMap(1);
 
   PlayerInit();
   
