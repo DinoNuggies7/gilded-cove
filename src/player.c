@@ -10,7 +10,7 @@ Player player;
 bool capturedCursor = true;
 
 void PlayerInit() {
-	player.camera.position = (Vector3){1, 0.5, 98};
+	player.camera.position = (Vector3){5, 0.5, 5};
 	player.camera.target = (Vector3){0, 0.5, 0};
 	player.camera.up = (Vector3){0, 1, 0};
 	player.camera.fovy = 80;
