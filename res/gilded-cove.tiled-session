@@ -6,8 +6,8 @@
     "activeFile": "map/1.tmj",
     "expandedProjectPaths": [
         "texture",
-        ".",
-        "map"
+        "map",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -16,7 +16,7 @@
                 4
             ],
             "scale": 0.75,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 479.33333333333326,
                 "y": 477.99999999999994
@@ -29,8 +29,8 @@
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 463.33333333333326,
-                "y": 439.33333333333326
+                "x": 538.6666666666666,
+                "y": 480.66666666666663
             }
         },
         "map/3.tmj": {
@@ -40,8 +40,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 625.7575757575759,
-                "y": 9153.030303030304
+                "x": 113.63636363636363,
+                "y": 4801.515151515151
             }
         },
         "texture/0.tsx": {

@@ -2,7 +2,6 @@
 #include "texture.h"
 #include "player.h"
 #include "draw.h"
-#include "map.h"
 
 void ActorInit(Actor* this) {
 	this->textureID = 0;
@@ -16,5 +15,6 @@ void ActorUpdate(Actor* this) {
 }
 
 void ActorDraw(Actor* this) {
-	DrawBillboardBetter(player.camera, texture[this->textureID], (Rectangle){0, 0, texture[this->textureID].width, texture[this->textureID].height}, (Vector3){this->pos.x, 0.5, this->pos.y}, (Vector3){0, 1, 0}, this->size, (Vector2){0.5, 0.5}, 0, WHITE);
+	Camera camera = {player.camera.position, player.camera.target, (Vector3){0, 1, 0}, player.camera.fovy, player.camera.projection};
+	DrawBillboardBetter(camera, texture[this->textureID], (Rectangle){0, 0, texture[this->textureID].width, texture[this->textureID].height}, (Vector3){this->pos.x, 0.5, this->pos.y}, (Vector3){0, 1, 0}, this->size, (Vector2){0.5, 0.5}, 0, WHITE);
 }

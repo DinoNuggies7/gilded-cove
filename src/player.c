@@ -63,6 +63,9 @@ void PlayerUpdate() {
 	player.camera.position.z += nvel.y;
 	player.camera.target.x += nvel.x;
 	player.camera.target.z += nvel.y;
+	Vector2 lerp = {nvel.x * 10 - player.camera.up.x, nvel.y * 10 - player.camera.up.z};
+	player.camera.up.x += lerp.x * GetFrameTime() * 10;
+	player.camera.up.z += lerp.y * GetFrameTime() * 10;
 	
 	float mousespeed = 0.075;
 	UpdateCameraPro(&player.camera,

@@ -44,6 +44,7 @@ void ObjectInteract_Door(Object* this) {
 
 void ObjectDraw_Door(Object* this) {
 	Camera camera = player.camera;
+	camera.up = (Vector3){0, 1, 0};
 	camera.position = camera.target = (Vector3){this->actor.pos.x, 0.5, this->actor.pos.y};
 	switch (this->data[0]) {
 		case 0:
