@@ -15,15 +15,15 @@ void ObjectUpdate_Door(Object* this) {
 	if (!this->data[4]) {
 		switch (this->data[0]) {
 			case 0:
-				this->actor.pos.y += 0.5;
+				this->actor.pos.z += 0.5;
 				break;
 			case 1:
 				this->actor.pos.x -= 0.5;
-				this->actor.pos.y++;
+				this->actor.pos.z++;
 				break;
 			case 2:
 				this->actor.pos.x--;
-				this->actor.pos.y += 0.49;
+				this->actor.pos.z += 0.49;
 				break;
 			case 3:
 				this->actor.pos.x -= 0.49;
@@ -45,7 +45,7 @@ void ObjectInteract_Door(Object* this) {
 void ObjectDraw_Door(Object* this) {
 	Camera camera = player.camera;
 	camera.up = (Vector3){0, 1, 0};
-	camera.position = camera.target = (Vector3){this->actor.pos.x, 0.5, this->actor.pos.y};
+	camera.position = camera.target = this->actor.pos;
 	switch (this->data[0]) {
 		case 0:
 			camera.position.z += 0.1;
@@ -60,7 +60,7 @@ void ObjectDraw_Door(Object* this) {
 			camera.position.x += 0.1;
 			break;
 	}
-	DrawBillboardBetter(camera, texture[this->actor.textureID], (Rectangle){0, 0, texture[this->actor.textureID].width, texture[this->actor.textureID].height}, (Vector3){this->actor.pos.x, 0.5, this->actor.pos.y}, (Vector3){0, 1, 0}, this->actor.size, (Vector2){0.5, 0.5}, 0, WHITE);
+	DrawBillboardBetter(camera, texture[this->actor.textureID], (Rectangle){0, 0, texture[this->actor.textureID].width, texture[this->actor.textureID].height}, this->actor.pos, (Vector3){0, 1, 0}, this->actor.size, (Vector2){0.5, 0.5}, 0, WHITE);
 }
 
 void __attribute__((constructor)) CreateDoorObject() {

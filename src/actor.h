@@ -5,7 +5,8 @@
 typedef struct Actor {
 	int textureID;
 	Rectangle srcrect;
-	Vector2 pos, size;
+	Vector3 pos;
+	Vector2 size;
 	Color color;
 } Actor;
 

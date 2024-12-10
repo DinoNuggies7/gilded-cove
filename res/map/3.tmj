@@ -105,7 +105,7 @@
             4, 4, 4],
          "height":100,
          "id":1,
-         "name":"Floor",
+         "name":"0",
          "opacity":1,
          "type":"tilelayer",
          "visible":false,
@@ -216,7 +216,7 @@
             4, 4, 4],
          "height":100,
          "id":2,
-         "name":"Wall",
+         "name":"1",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -227,7 +227,7 @@
         {
          "draworder":"topdown",
          "id":4,
-         "name":"Object",
+         "name":"1",
          "objects":[
                 {
                  "gid":5,
@@ -253,16 +253,27 @@
                  "y":9504
                 }, 
                 {
-                 "gid":7,
+                 "gid":5,
                  "height":96,
-                 "id":43,
-                 "name":"",
+                 "id":62,
+                 "name":"3",
+                 "properties":[
+                        {
+                         "name":"px",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"py",
+                         "type":"int",
+                         "value":98
+                        }],
                  "rotation":0,
-                 "type":"2",
+                 "type":"4",
                  "visible":true,
                  "width":96,
                  "x":96,
-                 "y":192
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -374,7 +385,7 @@
             4, 4, 4],
          "height":100,
          "id":3,
-         "name":"Ceiling",
+         "name":"2",
          "opacity":1,
          "type":"tilelayer",
          "visible":false,
@@ -383,7 +394,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":62,
+ "nextobjectid":63,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",

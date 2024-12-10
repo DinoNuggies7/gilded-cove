@@ -23,7 +23,7 @@ enum Objects {
 	OBJECTS
 };
 
-Object* CreateObject(int type, Vector2 pos);
+Object* CreateObject(int type, Vector3 pos);
 void KillObject(int id);
 
 extern int objects;

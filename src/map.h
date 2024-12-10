@@ -3,20 +3,16 @@
 #include "rlights.h"
 
 typedef struct Map {
-	int width, height;
+	int width, height, layers;
 	int* wall;
-	int* floor;
-	int* ceiling;
 	int objects;
 } Map;
 
 extern Map map;
 
-int GetWallTile(int x, int y);
-int GetFloorTile(int x, int y);
-int GetCeilingTile(int x, int y);
+int GetWallTile(int x, int y, int l);
 
-void DoCollision(Vector2 pos, Vector2* nvel, float size);
+int DoCollision(Vector3 pos, Vector3* nvel, float size);
 
 void ParseMap(int mapID);
 void FreeMap();

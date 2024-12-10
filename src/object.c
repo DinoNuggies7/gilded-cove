@@ -8,7 +8,7 @@ void (*ObjectUpdate[OBJECTS])(Object* object);
 void (*ObjectInteract[OBJECTS])(Object* object);
 void (*ObjectDraw[OBJECTS])(Object* object);
 
-Object* CreateObject(int type, Vector2 pos) {
+Object* CreateObject(int type, Vector3 pos) {
 	Object* obj = &object[objects];
 	bool done = false;
 	do {

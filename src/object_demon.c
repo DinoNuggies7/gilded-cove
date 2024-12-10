@@ -12,15 +12,26 @@ void ObjectInit_Demon(Object* this) {
 
 void ObjectUpdate_Demon(Object* this) {
 	Vector2 ppos = (Vector2){player.camera.position.x, player.camera.position.z};
-	Vector2 vel = Vector2Normalize(Vector2Subtract(ppos, this->actor.pos));
+	Vector2 dir = Vector2Normalize(Vector2Subtract(ppos, (Vector2){this->actor.pos.x, this->actor.pos.z}));
+	static Vector3 vel;
+	vel.x = dir.x;
+	vel.z = dir.y;
+
+	if (vel.y > -10)
+		vel.y -= 10 * GetFrameTime();
+	else
+		vel.y = -10;
 
 	float speed = 1.5;
-	Vector2 nvel = {vel.x * speed * GetFrameTime(), vel.y * speed * GetFrameTime()};
+	Vector3 nvel = {vel.x * speed * GetFrameTime(), vel.y * GetFrameTime(), vel.z * speed * GetFrameTime()};
 
-	DoCollision(this->actor.pos, &nvel, 0.2);
+	int col = DoCollision(this->actor.pos, &nvel, 0.2);
+	if (col > 0)
+		vel.y = 0;
 
 	this->actor.pos.x += nvel.x;
 	this->actor.pos.y += nvel.y;
+	this->actor.pos.z += nvel.z;
 	
 	ActorUpdate(&this->actor);
 }

@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map/1.tmj",
+    "activeFile": "map/4.tmj",
     "expandedProjectPaths": [
         "texture",
-        "map",
-        "."
+        ".",
+        "map"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -16,7 +16,7 @@
                 4
             ],
             "scale": 0.75,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 479.33333333333326,
                 "y": 477.99999999999994
@@ -27,10 +27,10 @@
                 3
             ],
             "scale": 0.75,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 538.6666666666666,
-                "y": 480.66666666666663
+                "x": 537.9999999999999,
+                "y": 480.66666666666674
             }
         },
         "map/3.tmj": {
@@ -38,10 +38,22 @@
                 4
             ],
             "scale": 0.33,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 113.63636363636374,
+                "y": 9050
+            }
+        },
+        "map/4.tmj": {
+            "expandedObjectLayers": [
+                8,
+                7
+            ],
+            "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 113.63636363636363,
-                "y": 4801.515151515151
+                "x": 525.9999999999999,
+                "y": 433.99999999999994
             }
         },
         "texture/0.tsx": {
@@ -70,15 +82,16 @@
         }
     },
     "last.imagePath": "/home/dinonuggies/C+/gilded-cove/res/texture",
-    "map.height": 100,
+    "map.height": 10,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 96,
     "map.tileWidth": 96,
-    "map.width": 3,
+    "map.width": 10,
     "openFiles": [
         "map/1.tmj",
         "map/2.tmj",
         "map/3.tmj",
+        "map/4.tmj",
         "texture/0.tsx",
         "texture/1.tsx",
         "texture/2.tsx",
@@ -89,14 +102,15 @@
     "project": "gilded-cove.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "map/1.tmj",
+        "map/2.tmj",
+        "map/3.tmj",
         "texture/5.tsx",
         "texture/4.tsx",
         "texture/3.tsx",
         "texture/2.tsx",
         "texture/1.tsx",
         "texture/0.tsx",
-        "map/3.tmj",
-        "map/2.tmj",
-        "map/1.tmj"
+        "map/4.tmj"
     ]
 }

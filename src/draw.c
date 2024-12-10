@@ -14,7 +14,9 @@ void DrawForeground() {
 		for (int i = 0; i < objects - 1; i++) {
 			Object* obj1 = &object[i];
 			Object* obj2 = &object[i+1];
-			if (Dist2Player(obj2->actor.pos) > Dist2Player(obj1->actor.pos)) {
+			Vector2 obj1pos = {obj1->actor.pos.x, obj1->actor.pos.z};
+			Vector2 obj2pos = {obj2->actor.pos.x, obj2->actor.pos.z};
+			if (Dist2Player(obj2pos) > Dist2Player(obj1pos)) {
 				Object tmp = *obj1;
 				*obj1 = *obj2;
 				*obj2 = tmp;
@@ -30,14 +32,12 @@ void DrawForeground() {
 }
 
 void DrawBackground() {
-	for (int j = 0; j < map.height; j++) {
-		for (int i = 0; i < map.width; i++) {
-			int wall = GetWallTile(i, j);
-			int floor = GetFloorTile(i, j);
-			int ceiling = GetCeilingTile(i, j);
-			if (wall > 0) DrawCubeTextureRec(texture[TEX_DUNGEON], GetTextureSrcRect(TEX_DUNGEON, wall), (Vector3){i, 0.5, j}, 1, 1, 1, WHITE);
-			if (floor > 0) DrawCubeTextureRec(texture[TEX_DUNGEON], GetTextureSrcRect(TEX_DUNGEON, floor), (Vector3){i, 0, j}, 1, 0, 1, WHITE);
-			if (ceiling > 0) DrawCubeTextureRec(texture[TEX_DUNGEON], GetTextureSrcRect(TEX_DUNGEON, ceiling), (Vector3){i, 1, j}, 1, 0, 1, WHITE);
+	for (int t = 0; t < map.layers; t++) {
+		for (int j = 0; j < map.height; j++) {
+			for (int i = 0; i < map.width; i++) {
+				int wall = GetWallTile(i, j, t);
+				if (wall > 0) DrawCubeTextureRec(texture[TEX_DUNGEON], GetTextureSrcRect(TEX_DUNGEON, wall), (Vector3){i, t + 0.5, j}, 1, 1, 1, WHITE);
+			}
 		}
 	}
 }

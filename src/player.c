@@ -10,7 +10,7 @@ Player player;
 bool capturedCursor = true;
 
 void PlayerInit() {
-	player.camera.position = (Vector3){5, 0.5, 5};
+	player.camera.position = (Vector3){5, 1.6, 5};
 	player.camera.target = (Vector3){0, 0.5, 0};
 	player.camera.up = (Vector3){0, 1, 0};
 	player.camera.fovy = 80;
@@ -21,49 +21,68 @@ void PlayerInit() {
 void PlayerUpdate() {
 	Vector3 target = Vector3Subtract(player.camera.target, player.camera.position);
 	Vector2 dir = Vector2Normalize((Vector2){target.x, target.z});
-	Vector2 pos = {player.camera.position.x, player.camera.position.z};
 
 	if (IsKeyPressed(KEY_E)) {
-		Vector2 lookpos = pos;
+		Vector3 lookpos = player.camera.position;
 		lookpos.x += dir.x * 0.25;
-		lookpos.y += dir.y * 0.25;
+		lookpos.z += dir.y * 0.25;
 		for (int i = 0; i < objects; i++) {
 			Object* obj = &object[i];
-			if (Vector2Distance(lookpos, obj->actor.pos) <= 0.25) {
+			if (Vector3Distance(lookpos, obj->actor.pos) <= 0.25) {
 				obj->interact(obj);
 				break;
 			}
 		}
 	}
 
-	Vector2 vel = {0, 0};
+	static Vector3 vel;
+	vel.x = vel.z = 0;
 	if (IsKeyDown(KEY_W)) {
 		vel.x += dir.x;
-		vel.y += dir.y;
+		vel.z += dir.y;
 	}
 	if (IsKeyDown(KEY_S)) {
 		vel.x -= dir.x;
-		vel.y -= dir.y;
+		vel.z -= dir.y;
 	}
 	if (IsKeyDown(KEY_A)) {
 		vel.x += dir.y;
-		vel.y -= dir.x;
+		vel.z -= dir.x;
 	}
 	if (IsKeyDown(KEY_D)) {
 		vel.x -= dir.y;
-		vel.y += dir.x;
+		vel.z += dir.x;
 	}
 
-	float speed = 2;
-	Vector2 nvel = {vel.x * speed * GetFrameTime(), vel.y * speed * GetFrameTime()};
+	static int jumps;
+	if (IsKeyPressed(KEY_SPACE) && jumps > 0) {
+		vel.y = 5;
+		jumps--;
+	}
 
-	DoCollision(pos, &nvel, 0.1);
+	if (vel.y > -10)
+		vel.y -= 10 * GetFrameTime();
+	else
+		vel.y = -10;
+
+	float speed = 2;
+	Vector3 nvel = {vel.x * speed * GetFrameTime(), vel.y * GetFrameTime(), vel.z * speed * GetFrameTime()};
+
+	int col = DoCollision(player.camera.position, &nvel, 0.1);
+	if (col > 0) {
+		vel.y = 0;
+		nvel.y = 0;
+	}
+	if (col > 1)
+		jumps = 1;
 
 	player.camera.position.x += nvel.x;
-	player.camera.position.z += nvel.y;
+	player.camera.position.y += nvel.y;
+	player.camera.position.z += nvel.z;
 	player.camera.target.x += nvel.x;
-	player.camera.target.z += nvel.y;
-	Vector2 lerp = {nvel.x * 10 - player.camera.up.x, nvel.y * 10 - player.camera.up.z};
+	player.camera.target.y += nvel.y;
+	player.camera.target.z += nvel.z;
+	Vector2 lerp = {nvel.x * 10 - player.camera.up.x, nvel.z * 10 - player.camera.up.z};
 	player.camera.up.x += lerp.x * GetFrameTime() * 10;
 	player.camera.up.z += lerp.y * GetFrameTime() * 10;
 	
