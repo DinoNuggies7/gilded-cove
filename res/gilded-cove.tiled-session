@@ -43,14 +43,14 @@
         },
         "map/4.tmj": {
             "expandedObjectLayers": [
-                8,
-                7
+                7,
+                8
             ],
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 525.9999999999999,
-                "y": 433.99999999999994
+                "x": 480.66666666666663,
+                "y": 480.66666666666663
             }
         },
         "texture/0.tsx": {
@@ -109,5 +109,10 @@
         "texture/0.tsx",
         "map/4.tmj",
         "map/3.tmj"
-    ]
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 96,
+        "width": 96
+    }
 }

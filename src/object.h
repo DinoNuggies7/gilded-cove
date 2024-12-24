@@ -19,6 +19,7 @@ enum Objects {
 	OBJ_DEMON,
 	OBJ_TORCH,
 	OBJ_DOOR,
+	OBJ_LADDER,
 
 	OBJECTS
 };

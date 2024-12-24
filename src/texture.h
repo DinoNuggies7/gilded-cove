@@ -9,6 +9,7 @@ enum Textures {
 	TEX_DEMON,
 	TEX_TORCH,
 	TEX_DOOR,
+	TEX_LADDER,
 	TEXTURES
 };
 extern Texture2D texture[TEXTURES];

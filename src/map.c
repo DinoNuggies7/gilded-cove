@@ -169,30 +169,35 @@ void ParseMap(int mapID) {
 				float x = cJSON_GetNumberValue(objectX) / cJSON_GetNumberValue(objectW);
 				float z = cJSON_GetNumberValue(objectZ) / cJSON_GetNumberValue(objectH);
 				Object* obj = CreateObject(atoi(cJSON_GetStringValue(type)), (Vector3){x, layernum + 0.5, z - 1});
-				switch (obj->type) {
-					case OBJ_DOOR:;
-						cJSON* jrotation = cJSON_GetObjectItem(jobject, "rotation");
-						cJSON* jwarp = cJSON_GetObjectItem(jobject, "name");
-						cJSON* jproperties = cJSON_GetObjectItem(jobject, "properties");
-						cJSON* jproperty;
-						int px, py;
-						cJSON_ArrayForEach(jproperty, jproperties) {
-							cJSON* jpname = cJSON_GetObjectItem(jproperty, "name");
-							cJSON* jpvalue = cJSON_GetObjectItem(jproperty, "value");
-							if (strcmp(cJSON_GetStringValue(jpname), "px") == 0)
-								px = cJSON_GetNumberValue(jpvalue);
-							if (strcmp(cJSON_GetStringValue(jpname), "py") == 0)
-								py = cJSON_GetNumberValue(jpvalue);
-						}
-						float rotation = cJSON_GetNumberValue(jrotation);
-						int warp = atoi(cJSON_GetStringValue(jwarp));
-						obj->data = malloc((int)sizeof(char) * sizeof(int) * 5);
-						obj->data[0] = (int)(rotation / 90);
-						obj->data[1] = warp;
-						obj->data[2] = px;
-						obj->data[3] = py;
-						obj->data[4] = false;
-						break;
+				if (obj->type == OBJ_DOOR) {
+					cJSON* jrotation = cJSON_GetObjectItem(jobject, "rotation");
+					cJSON* jwarp = cJSON_GetObjectItem(jobject, "name");
+					cJSON* jproperties = cJSON_GetObjectItem(jobject, "properties");
+					cJSON* jproperty;
+					int px, py;
+					cJSON_ArrayForEach(jproperty, jproperties) {
+						cJSON* jpname = cJSON_GetObjectItem(jproperty, "name");
+						cJSON* jpvalue = cJSON_GetObjectItem(jproperty, "value");
+						if (strcmp(cJSON_GetStringValue(jpname), "px") == 0)
+							px = cJSON_GetNumberValue(jpvalue);
+						if (strcmp(cJSON_GetStringValue(jpname), "py") == 0)
+							py = cJSON_GetNumberValue(jpvalue);
+					}
+					float rotation = cJSON_GetNumberValue(jrotation);
+					int warp = atoi(cJSON_GetStringValue(jwarp));
+					obj->data = malloc((int)sizeof(char) * sizeof(int) * 5);
+					obj->data[0] = (int)(rotation / 90);
+					obj->data[1] = warp;
+					obj->data[2] = px;
+					obj->data[3] = py;
+					obj->data[4] = false;
+				}
+				else if (obj->type == OBJ_LADDER) {
+					cJSON* jrotation = cJSON_GetObjectItem(jobject, "rotation");
+					float rotation = cJSON_GetNumberValue(jrotation);
+					obj->data = malloc((int)sizeof(char) * sizeof(int) * 2);
+					obj->data[0] = (int)(rotation / 90);
+					obj->data[1] = false;
 				}
 				i++;
 			}

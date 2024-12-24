@@ -5,6 +5,7 @@
 typedef struct Player {
 	Camera3D camera;
 	Light* light;
+	int isClimbing;
 } Player;
 
 extern Player player;
