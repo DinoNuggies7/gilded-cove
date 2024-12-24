@@ -9,6 +9,13 @@ typedef struct Player {
 
 extern Player player;
 extern bool capturedCursor;
+extern int mode;
+enum Modes {
+	PLAY,
+	PAUSE,
+
+	MODES
+};
 
 void PlayerInit();
 void PlayerUpdate();

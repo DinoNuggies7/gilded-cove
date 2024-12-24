@@ -8,6 +8,7 @@
 
 Player player;
 bool capturedCursor = true;
+int mode = PLAY;
 
 void PlayerInit() {
 	player.camera.position = (Vector3){5, 1.6, 5};
@@ -82,7 +83,7 @@ void PlayerUpdate() {
 	player.camera.target.x += nvel.x;
 	player.camera.target.y += nvel.y;
 	player.camera.target.z += nvel.z;
-	Vector2 lerp = {nvel.x * 10 - player.camera.up.x, nvel.z * 10 - player.camera.up.z};
+	Vector2 lerp = {vel.x * 0.1 - player.camera.up.x, vel.z * 0.1 - player.camera.up.z};
 	player.camera.up.x += lerp.x * GetFrameTime() * 10;
 	player.camera.up.z += lerp.y * GetFrameTime() * 10;
 	

@@ -44,13 +44,26 @@ int main(int argc, char* argv[]) {
 			  SetWindowSize(GetMonitorWidth(GetCurrentMonitor()) / 2, GetMonitorHeight(GetCurrentMonitor()) / 2);
   		ToggleFullscreen();
   	}
+  	if (IsKeyPressed(KEY_ESCAPE)) {
+  		switch (mode) {
+  			case PLAY:
+  				mode = PAUSE;
+  				break;
+  			case PAUSE:
+  				mode = PLAY;
+  		}
+  	}
+  	if (!IsWindowFocused())
+  		mode = PAUSE;
 
-	  PlayerUpdate();
+  	if (mode == PLAY) {
+		  PlayerUpdate();
 
-	  for (int i = 0; i < objects; i++) {
-		  Object* obj = &object[i];
-		  obj->update(obj);
-	  }
+		  for (int i = 0; i < objects; i++) {
+			  Object* obj = &object[i];
+			  obj->update(obj);
+		  }
+		}
 
 	  SetShaderValue(shader, lightsNumLoc, &lights, SHADER_UNIFORM_INT);
 	  SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], (float[3]){player.camera.position.x, player.camera.position.y, player.camera.position.z}, SHADER_UNIFORM_VEC3);
@@ -66,6 +79,7 @@ int main(int argc, char* argv[]) {
 		  EndMode3D();
 		  PlayerDraw();
 		  DrawFPS(0, 0);
+		  if (mode == PAUSE) DrawText("PAUSED", 0, height - height / 8, height / 8, RED);
 	  EndTextureMode();
 
 	  image = LoadImageFromTexture(target.texture);

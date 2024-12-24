@@ -3,18 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map/4.tmj",
+    "activeFile": "map/3.tmj",
     "expandedProjectPaths": [
-        "texture",
+        "map",
         ".",
-        "map"
+        "texture"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "map/1.tmj": {
-            "expandedObjectLayers": [
-                4
-            ],
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
@@ -37,11 +34,11 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.33,
-            "selectedLayer": 3,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 113.63636363636374,
-                "y": 9050
+                "x": 195.66666666666663,
+                "y": 160.33333333333331
             }
         },
         "map/4.tmj": {
@@ -104,13 +101,13 @@
     "recentFiles": [
         "map/1.tmj",
         "map/2.tmj",
-        "map/3.tmj",
         "texture/5.tsx",
         "texture/4.tsx",
         "texture/3.tsx",
         "texture/2.tsx",
         "texture/1.tsx",
         "texture/0.tsx",
-        "map/4.tmj"
+        "map/4.tmj",
+        "map/3.tmj"
     ]
 }
