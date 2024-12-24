@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
   Image image;
   Texture texture;
 
-  shader = LoadShader("res/shader/lighting.vs", "res/shader/lighting.fs");
+  shader = LoadShader("res/shader/vertex.glsl", "res/shader/fragment.glsl");
   shader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shader, "viewPos");
   int lightsNumLoc = GetShaderLocation(shader, "lightsNum");
   
