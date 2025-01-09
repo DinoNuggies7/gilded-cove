@@ -9,6 +9,7 @@
 Shader shader;
 
 int main(int argc, char* argv[]) {
+	SetTraceLogLevel(LOG_WARNING);
 
 	int width = 426, height = 240;
   bool fullscreen = true;

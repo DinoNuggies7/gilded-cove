@@ -27,7 +27,6 @@ Object* CreateObject(int type, Vector3 pos) {
 	obj->interact = ObjectInteract[type];
 	obj->draw = ObjectDraw[type];
 	obj->actor.pos = pos;
-	obj->init(obj);
 	objects++;
 	return obj;
 }

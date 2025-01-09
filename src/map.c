@@ -172,9 +172,11 @@ void ParseMap(int mapID) {
 				if (obj->type == OBJ_DOOR) {
 					cJSON* jrotation = cJSON_GetObjectItem(jobject, "rotation");
 					cJSON* jwarp = cJSON_GetObjectItem(jobject, "name");
+					float rotation = cJSON_GetNumberValue(jrotation);
+					int warp = atoi(cJSON_GetStringValue(jwarp));
+					int px = 0, py = 0;
 					cJSON* jproperties = cJSON_GetObjectItem(jobject, "properties");
 					cJSON* jproperty;
-					int px, py;
 					cJSON_ArrayForEach(jproperty, jproperties) {
 						cJSON* jpname = cJSON_GetObjectItem(jproperty, "name");
 						cJSON* jpvalue = cJSON_GetObjectItem(jproperty, "value");
@@ -183,22 +185,30 @@ void ParseMap(int mapID) {
 						if (strcmp(cJSON_GetStringValue(jpname), "py") == 0)
 							py = cJSON_GetNumberValue(jpvalue);
 					}
-					float rotation = cJSON_GetNumberValue(jrotation);
-					int warp = atoi(cJSON_GetStringValue(jwarp));
-					obj->data = malloc((int)sizeof(char) * sizeof(int) * 5);
-					obj->data[0] = (int)(rotation / 90);
-					obj->data[1] = warp;
-					obj->data[2] = px;
-					obj->data[3] = py;
-					obj->data[4] = false;
+
+					cJSON* jdata = cJSON_CreateObject();
+					cJSON_AddBoolToObject(jdata, "post_init", false);
+					cJSON_AddNumberToObject(jdata, "rotation", (int)(rotation / 90));
+					cJSON_AddNumberToObject(jdata, "warp", warp);
+					cJSON_AddNumberToObject(jdata, "px", px);
+					cJSON_AddNumberToObject(jdata, "py", py);
+					// printf("\njson:\n%s\n", cJSON_Print(jdata));
+					obj->data = cJSON_Print(jdata);
+					// printf("\ndata:\n%s\n", obj->data);
+					cJSON_Delete(jdata);
 				}
 				else if (obj->type == OBJ_LADDER) {
 					cJSON* jrotation = cJSON_GetObjectItem(jobject, "rotation");
 					float rotation = cJSON_GetNumberValue(jrotation);
-					obj->data = malloc((int)sizeof(char) * sizeof(int) * 2);
-					obj->data[0] = (int)(rotation / 90);
-					obj->data[1] = false;
+
+					cJSON* jdata = cJSON_CreateObject();
+					cJSON_AddNumberToObject(jdata, "rotation", (int)(rotation / 90));
+					// printf("\njson:\n%s\n", cJSON_Print(jdata));
+					obj->data = cJSON_Print(jdata);
+					// printf("\ndata:\n%s\n", obj->data);
+					cJSON_Delete(jdata);
 				}
+				obj->init(obj);
 				i++;
 			}
 		}

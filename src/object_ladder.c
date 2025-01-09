@@ -3,41 +3,47 @@
 #include "player.h"
 #include "draw.h"
 
-#include <raymath.h>
+#include <cjson/cJSON.h>
 
 void ObjectInit_Ladder(Object* this) {
 	ActorInit(&this->actor);
 	this->actor.textureID = TEX_LADDER;
+
+	cJSON* jdata = cJSON_Parse(this->data);
+	cJSON* jrotation = cJSON_GetObjectItem(jdata, "rotation");
+
+	switch ((int)cJSON_GetNumberValue(jrotation)) {
+		case 0:
+			this->actor.pos.z += 0.5;
+			break;
+		case 1:
+			this->actor.pos.x -= 0.5;
+			this->actor.pos.z++;
+			break;
+		case 2:
+			this->actor.pos.x--;
+			this->actor.pos.z += 0.49;
+			break;
+		case 3:
+			this->actor.pos.x -= 0.49;
+			break;
+	}
+
+	cJSON_Delete(jdata);
 }
 
 void ObjectUpdate_Ladder(Object* this) {
-	if (!this->data[1]) {
-		switch (this->data[0]) {
-			case 0:
-				this->actor.pos.z += 0.5;
-				break;
-			case 1:
-				this->actor.pos.x -= 0.5;
-				this->actor.pos.z++;
-				break;
-			case 2:
-				this->actor.pos.x--;
-				this->actor.pos.z += 0.49;
-				break;
-			case 3:
-				this->actor.pos.x -= 0.49;
-				break;
-		}
-		this->data[1] = true;
-	}
 	ActorUpdate(&this->actor);
 }
 
 void ObjectInteract_Ladder(Object* this) {
+	cJSON* jdata = cJSON_Parse(this->data);
+	cJSON* jrotation = cJSON_GetObjectItem(jdata, "rotation");
+
 	if (player.isClimbing == 0) {
 		player.isClimbing = this->id;
 		player.camera.position = this->actor.pos;
-		switch (this->data[0]) {
+		switch ((int)cJSON_GetNumberValue(jrotation)) {
 			case 0:
 				player.camera.position.z += 0.3;
 				break;
@@ -57,13 +63,18 @@ void ObjectInteract_Ladder(Object* this) {
 	else {
 		player.isClimbing = 0;
 	}
+
+	cJSON_Delete(jdata);
 }
 
 void ObjectDraw_Ladder(Object* this) {
+	cJSON* jdata = cJSON_Parse(this->data);
+	cJSON* jrotation = cJSON_GetObjectItem(jdata, "rotation");
+
 	Camera camera = player.camera;
 	camera.up = (Vector3){0, 1, 0};
 	camera.position = camera.target = this->actor.pos;
-	switch (this->data[0]) {
+	switch ((int)cJSON_GetNumberValue(jrotation)) {
 		case 0:
 			camera.position.z += 0.1;
 			break;
@@ -78,6 +89,8 @@ void ObjectDraw_Ladder(Object* this) {
 			break;
 	}
 	DrawBillboardBetter(camera, texture[this->actor.textureID], (Rectangle){0, 0, texture[this->actor.textureID].width, texture[this->actor.textureID].height}, this->actor.pos, (Vector3){0, 1, 0}, this->actor.size, (Vector2){0.5, 0.5}, 0, WHITE);
+
+	cJSON_Delete(jdata);
 }
 
 void __attribute__((constructor)) CreateLadderObject() {
