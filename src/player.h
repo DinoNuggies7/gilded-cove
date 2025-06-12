@@ -8,6 +8,7 @@ extern struct Player {
 	bool *map;
 	bool *room;
 	int hp, hp_max, dc, weapon;
+	int xp, level, floor;
 } player;
 
 void init_player();

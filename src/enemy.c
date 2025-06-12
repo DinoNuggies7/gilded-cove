@@ -24,11 +24,16 @@ void init_enemy(Enemy *this, int type) {
 void update_enemy(Enemy *this) {
 	bool agro = false;
 
-	if (player.x >= this->x - E_RANGE[this->type]
-	 && player.x <= this->x + E_RANGE[this->type]
-	 && player.y >= this->y - E_RANGE[this->type]
-	 && player.y <= this->y + E_RANGE[this->type]) {
-		agro = true;
+	for (int i = 0; i < map.rooms; i++) {
+		if (in_room(player.x, player.y, i)) {
+			if (player.x >= this->x - E_RANGE[this->type]
+			 && player.x <= this->x + E_RANGE[this->type]
+			 && player.y >= this->y - E_RANGE[this->type]
+			 && player.y <= this->y + E_RANGE[this->type]) {
+				agro = true;
+			}
+			break;
+		}
 	}
 
 	int dir;
@@ -56,6 +61,13 @@ void update_enemy(Enemy *this) {
 	if (map.data[nx + ny * map.w])
 		return;
 
+	for (int i = 0; i < enemies; i++) {
+		if (nx == enemy[i].x && ny == enemy[i].y) {
+			nx = ny = 0;
+			return;
+		}
+	}
+
 	if (nx == player.x && ny == player.y) {
 		nx = ny = 0;
 
@@ -73,8 +85,7 @@ void update_enemy(Enemy *this) {
 
 		int cury = getcury(stdscr);
 		move(0, 0);
-		draw_map();
-		draw_objects();
+		draw_screen();
 		move(cury, 0);
 
 		while (getch() != ' ');
@@ -102,5 +113,6 @@ void spawn_enemies(int num) {
 }
 
 void free_enemies() {
+	enemies = 0;
 	free(enemy);
 }

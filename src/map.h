@@ -14,3 +14,6 @@ extern struct Map {
 
 void generate_map(int w, int h, int lines);
 void free_map();
+
+void init_floor();
+bool in_room(int x, int y, int room);

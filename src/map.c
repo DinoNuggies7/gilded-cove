@@ -92,6 +92,14 @@ void generate_map(int w, int h, int lines) {
 }
 
 void free_map() {
+	map.rooms = 0;
 	free(map.data);
 	free(map.room);
+}
+
+bool in_room(int x, int y, int room) {
+	return x >= map.room[room].x1
+			&& x <= map.room[room].x2
+			&& y >= map.room[room].y1
+			&& y <= map.room[room].y2;
 }

@@ -1,12 +1,12 @@
 #include "player.h"
-#include "draw.h"
 #include "enemy.h"
+#include "object.h"
 #include "weapons.h"
 #include "map.h"
+#include "draw.h"
 
 #include <ncurses.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 struct Player player;
@@ -20,7 +20,7 @@ void init_player() {
 
 	player.dir = -1;
 
-	player.map= malloc(map.w * map.h * sizeof(bool));
+	player.map = malloc(map.w * map.h * sizeof(bool));
 	for (int i = 0; i < map.w * map.h; i++)
 		player.map[i] = false;
 
@@ -28,9 +28,7 @@ void init_player() {
 	for (int i = 0; i < map.rooms; i++)
 		player.room[i] = false;
 
-	player.hp = player.hp_max = 10;
-	player.dc = 10;
-	player.weapon = W_HANDS;
+	discover_room();
 }
 
 void update_player() {
@@ -52,7 +50,7 @@ void update_player() {
   	  	player.dir = 4;
   	  	break;
   	  case 'Q':
-  	  	printw("> are you sure you want to quit? y/n\n");
+  	  	printw("> are you sure you want to quit? (y/n)\n");
   	  	if (getch() == 'y') {
 	  	  	player.hp = 0;
 	  	  	player.dir = 4;
@@ -99,8 +97,7 @@ void update_player() {
 
 			int cury = getcury(stdscr);
 			move(0, 0);
-			draw_map();
-			draw_objects();
+			draw_screen();
 			move(cury, 0);
 
 			while (getch() != ' ');
@@ -108,15 +105,41 @@ void update_player() {
 		}
 	}
 
+	for (int i = 0; i < objects; i++) {
+		if (nx == object[i].x && ny == object[i].y)
+			use_object[object[i].type](&object[i]);
+	}
+
 	player.x = nx;
 	player.y = ny;
 
+	discover_room();
+}
+
+int dir_to_player(int x, int y) {
+	float dx = player.x - x;
+	float dy = player.y - y;
+	float magnitude = sqrt(dx * dx + dy * dy);
+	if (magnitude != 0) {
+		dx /= magnitude;
+		dy /= magnitude;
+	}
+	else
+		dx = dy = 0;
+
+	int dir;
+	if (dx < -0.5) dir = 0;
+	if (dy >  0.5) dir = 1;
+	if (dy < -0.5) dir = 2;
+	if (dx >  0.5) dir = 3;
+
+	return dir;
+}
+
+void discover_room() {
 	for (int i = 0; i < map.rooms; i++) {
 		if (!player.room[i]) {
-			if (player.x >= map.room[i].x1
-			 && player.x <= map.room[i].x2
-			 && player.y >= map.room[i].y1
-			 && player.y <= map.room[i].y2) {
+			if (in_room(player.x, player.y, i)) {
 				player.room[i] = true;
 				for (int j = map.room[i].y1; j <= map.room[i].y2; j++) {
 					for (int t = map.room[i].x1; t <= map.room[i].x2; t++) {
@@ -127,20 +150,4 @@ void update_player() {
 			}
 		}
 	}
-}
-
-int dir_to_player(int x, int y) {
-	float dx = player.x - x;
-	float dy = player.y - y;
-	float magnitude = sqrt(dx * dx + dy * dy);
-	dx /= magnitude;
-	dy /= magnitude;
-
-	int dir;
-	if (dx < -0.5) dir = 0;
-	if (dy >  0.5) dir = 1;
-	if (dy < -0.5) dir = 2;
-	if (dx >  0.5) dir = 3;
-
-	return dir;
 }

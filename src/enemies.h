@@ -2,6 +2,7 @@
 
 enum EnemyTypes {
 	E_RAT,
+	E_BAT,
 
 	E_TYPES
 };
